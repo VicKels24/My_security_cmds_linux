@@ -1,0 +1,14 @@
+                         / (Root Directory)
+         ┌───────────────┼───────────────┬──────────────┐
+       /bin            /etc            /var           /home
+    (Binaries)     (Config Files)   (Logs & Data)  (User Folders)
+                         │               │
+                    /etc/passwd     /var/log/syslog
+
+$ pwd
+/home/analyst/investigations
+$ ls -la
+drwxr-xr-x  2 analyst security 4096 Jun 12 00:00 .
+drwxr-xr-x 20 analyst security 4096 Jun 12 00:00 ..
+-rw-r--r--  1 analyst security  150 Jun 12 00:00 .hidden_config
+-rw-r--r--  1 analyst security 1024 Jun 12 00:00 audit.log
