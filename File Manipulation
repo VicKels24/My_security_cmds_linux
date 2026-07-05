@@ -1,0 +1,4 @@
+$ touch forensic_notes.txt
+$ cp raw_events.log /var/backups/events_copy.log
+$ cp -r /var/log/ /quarantine/logs/
+$ mv suspicious_binary.exe /quarantine/malware.exe
