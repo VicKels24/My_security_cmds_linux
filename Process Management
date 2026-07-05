@@ -1,0 +1,38 @@
+$ ps aux | grep apache2
+www-data   1234  0.0  0.4  ...  /usr/sbin/apache2
+``
+
+### ⚡ Real-Time Monitoring: `top`
+Running **`top`** opens an interactive terminal interface displaying CPU, RAM usage, and load averages in real-time.
+*   Press **`q`** to exit the interface.
+
+---
+
+## 2. Terminating Processes: `kill` vs. `kill -9`
+
+If a process consumes too many resources or is identified as malicious (e.g., a reverse shell backdoor), you must terminate it.
+
+| Command | Signal | Description |
+| :--- | :--- | :--- |
+| **`kill [PID]`** | **SIGTERM (15)** | Sends a **SIGTERM (polite request to stop)**. The process can catch this signal, save its current state, clean up temp files, and exit gracefully. |
+| **`kill -9 [PID]`** | **SIGKILL (9)** | Sends a **SIGKILL (forceful termination)**. The kernel immediately kills the process, bypassing any cleanup operations. Use this only when a process is frozen or refuses to terminate. |
+
+> [!WARNING]
+> Force-killing a database or active service with `kill -9` can lead to data corruption since the process is not allowed to close open file handlers properly.
+
+---
+
+## 3. Terminal Job Control: `Ctrl+Z` and `bg`
+
+When running long operations (like a vulnerability scan) in your terminal, you can manage its execution state:
+
+1.  **Pause the Process**: Pressing **`Ctrl+Z`** in the terminal suspends the currently running foreground process and pauses it.
+2.  **Move to Background**: Typing **`bg`** **resumes the paused process, running it in the background** so your terminal is freed up for other commands.
+3.  **Return to Foreground**: Type **`fg`** to bring the background job back to the foreground.
+
+```bash
+$ nmap -sV 10.10.10.0/24
+^Z
+[1]+  Stopped                 nmap -sV 10.10.10.0/24
+$ bg
+[1]+ nmap -sV 10.10.10.0/24 &
