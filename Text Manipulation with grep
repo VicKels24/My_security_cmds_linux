@@ -1,0 +1,4 @@
+$ grep -i "failed" /var/log/auth.log
+$ grep -r "eval(base64_decode" /var/www/html/
+$ cat access.log | grep "admin.php"
+$ cat access.log | grep "404" | wc -l
