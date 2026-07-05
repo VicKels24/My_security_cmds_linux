@@ -1,0 +1,7 @@
+   -   rwx   r-x   r--
+   │    │     │     │
+   │    │     │     └─► 3. Others (everyone else) permissions
+   │    │     └───────► 2. Group permissions
+   │    └─────────────► 1. Owner (User) permissions
+   └──────────────────► File Type (- = standard file, d = directory)
+
